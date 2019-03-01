@@ -1,0 +1,36 @@
+<br>
+<div class="container">
+  <form [formGroup]="titleForm" (ngSubmit)="post()">
+    <div class="card">
+      <div class="card-header">
+        ■ Post Title
+      </div>
+      <div class="card-body">
+        <input type="text" formControlName="title" class="form-control input-group mb-2"
+          placeholder="Enter the post title here!">
+        <div *ngIf="titleForm.get('title').invalid && titleForm.get('title').touched">
+          <div *ngIf="titleForm.get('title').errors.required">*Please enter a title</div>
+          <div *ngIf="titleForm.get('title').errors.minlength">*Please enter minimun 5 characters</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        ■ Post Description
+      </div>
+      <div class="input-group">
+        <div class="card-body">
+          <textarea class="form-control input-group mb-7" formControlName="description" aria-label="With textarea"
+            placeholder="Enter a decsription here!"></textarea>
+          <div *ngIf="titleForm.get('description').invalid && titleForm.get('description').touched">
+            <div *ngIf="titleForm.get('description').errors.required">*Please enter a description</div>
+            <div *ngIf="titleForm.get('description').errors.minlength">*Please enter minimun 5 characters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" [disabled]="titleForm.invalid">POST</button>
+  </form>
+</div>

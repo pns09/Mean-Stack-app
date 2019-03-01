@@ -1,0 +1,25 @@
+<div class="loginform">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+        <h2 class="text-center">LOGIN</h2>
+        <br>
+        <div>
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+            <div *ngIf="!loginForm.get('name').valid && loginForm.get('name').touched">
+                <div *ngIf="loginForm.get('name').errors.required">*Name is required!</div>
+                <div *ngIf="loginForm.get('name').errors.minlength">*Should be 5 characters long!</div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                <div *ngIf="loginForm.get('password').errors.required">*Password is required!</div>
+                <div *ngIf="loginForm.get('password').errors.minlength">*Should be 5 characters long!</div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+        </div>
+    </form>
+</div>

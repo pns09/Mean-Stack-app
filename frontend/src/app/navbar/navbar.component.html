@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-dark">
+  <span class="navbar-brand mb-2 h1 text-light">Assessment</span>
+  <div class="links">
+    <button [routerLink]="['/register']" [hidden]="navUpdate" class="btn btn-primary">Register</button>
+    <button [routerLink]="['/login']"[hidden]="navUpdate" class="btn btn-primary">Login</button>
+    <button [routerLink]="['/home']" *ngIf="navUpdate" class="btn btn-primary">Home</button>
+    <button [routerLink]="['/createpost']" *ngIf="navUpdate" class="btn btn-primary">Create Posts</button>
+    <button [routerLink]="['/postdetails']" *ngIf="navUpdate" class="btn btn-primary">Post Details</button>
+
+    <button (click)="logout()" class="btn btn-danger">Logout</button>
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+.btn.btn-primary{
+
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #007BFF;
+    color: white;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  
+}

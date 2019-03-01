@@ -1,0 +1,49 @@
+
+<div class="signup-form">
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <h2>Register</h2>
+    <div class="form-group">
+
+      <div class="form-group">
+        <div class="col-xs-6">
+          <input type="text" formControlName="name" class="form-control" placeholder="Name">
+          <div *ngIf="!userForm.get('name').valid && userForm.get('name').touched">
+            <div *ngIf="userForm.get('name').errors.required">*Name is required!</div>
+            <div *ngIf="userForm.get('name').errors.minlength">*Should be 5 characters long!</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <input formControlName="email" type="email" class="form-control" placeholder="Email">
+        <div *ngIf="!userForm.get('email').valid && userForm.get('email').touched">
+          <div *ngIf="userForm.get('email').errors.required">*Email is required!</div>
+          <div *ngIf="userForm.get('email').errors.pattern">*Should match the pattern!</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" formControlName="password" class="form-control" placeholder="Password">
+        <div *ngIf="!userForm.get('password').valid && userForm.get('password').touched">
+          <div *ngIf="userForm.get('password').errors.required">*Password is required!</div>
+          <div *ngIf="userForm.get('password').errors.minlength">*Should be 5 characters long!</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="userForm.invalid">Register Now</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+

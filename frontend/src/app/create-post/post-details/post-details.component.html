@@ -1,0 +1,41 @@
+<div class="container container-fluid">
+  <br>
+  <div class="dropdown">
+    <button [routerLink]="['/createpost']" class="btn btn-primary btn-md"><i class="fas fa-plus-circle"></i>&nbsp;New
+      Post</button></div>
+  <br>
+  <div class="panel panel-success" *ngFor="let blog of blogPosts">
+    <!-- post component input = blog -->
+    <div class="card card-body">
+      <div class="card-heading">
+        <h3 class="card-title">{{ blog.title }}</h3>
+      </div>
+
+      <div class="card-body">
+        {{ blog.description }}
+      </div>
+      <div class='alert alert-primary'>
+        Created by: <strong>{{blog.createdBy == (_authService.user | async)?.name ? "You" : blog.createdBy }}</strong>
+      </div>
+
+      <div>
+        <button (click)="likePost(blog._id)" class="btn btn-primary"><i class="fas fa-thumbs-up"></i>&nbsp;Like
+          {{ blog.like }}</button>
+        <button (click)="showComment = blog._id" class="btn btn-success"><i
+            class="fas fa-comment-dots"></i>&nbsp;Comments</button>
+        <button (click)="deletePost(blog._id)" class="btn btn-danger"><i
+            class="fas fa-trash-alt"></i>&nbsp;Delete</button>
+      </div>
+      <br>
+      <div *ngIf="showComment == blog._id">
+
+        <input type="text" style="display:inline;" class="form-control col-5" #commentvalue placeholder="Add new comment!">
+       <span><button (click)="addComment(blog._id, commentvalue)" class="btn btn-success">post</button></span>
+
+        <div *ngFor="let item of blog.comment">
+          <div class="alert alert-warning">{{item}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
